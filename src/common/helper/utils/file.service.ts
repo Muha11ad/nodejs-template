@@ -1,5 +1,5 @@
 import { promises as fs } from "fs";
-import { pathToUserJson } from "../consts/pathToUserJson.js";
+import { pathToUserJson } from "../consts/paths.js";
 
 export class FileService {
   public async getAll(): Promise<any[]> {

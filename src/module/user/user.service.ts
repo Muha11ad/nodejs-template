@@ -1,5 +1,5 @@
 import { promises as fs } from "fs";
-import { pathToUserJson } from "../../common/helper/consts/pathToUserJson.js";
+import { pathToUserJson } from "../../common/helper/consts/paths.js";
 import { IUserInputDTO, IUserUpdateDTO } from "./user.model.js";
 import { USER_ERROR_MESSAGES } from "@/common/helper/consts/userResponse.consts.js";
 

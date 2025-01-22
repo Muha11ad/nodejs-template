@@ -11,11 +11,13 @@
     "start": "node dist/main.js"
   },
   "devDependencies": {
+    "@types/multer": "^1.4.12",
     "@types/node": "^22.10.7",
     "typescript": "^5.7.3"
   },
   "dependencies": {
     "body-parser": "^1.20.3",
-    "dotenv": "^16.4.7"
+    "dotenv": "^16.4.7",
+    "multer": "^1.4.5-lts.1"
   }
 }
