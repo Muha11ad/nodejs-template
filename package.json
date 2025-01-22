@@ -1,0 +1,20 @@
+{
+  "name": "crud",
+  "author": "Mim",
+  "license": "ISC",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "description": "Template for NodeJs with ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/main.js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+}
