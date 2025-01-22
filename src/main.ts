@@ -1,23 +1,24 @@
-import * as url from "url";
 import * as dotenv from "dotenv";
-import { createServer } from "node:http";
-import { Variables } from "./configs";
-
 dotenv.config();
 
+import { Router } from "./routes.js";
+import { createServer, IncomingMessage, ServerResponse } from "node:http";
+
 function server() {
-  return createServer((req, res) => {
-    const urlParse = url.parse(req.url || "", true);
-    if (urlParse.pathname == "/user" && req.method == "GET") {
-      res.writeHead(200, { "Content-Type": "application/json" });
-      res.write(JSON.stringify({ name: "John Doe" }));
-      return res.end();
-    }
+  return createServer((req: IncomingMessage, res: ServerResponse) => {
+    const router = new Router(req, res);
+    router.renderRoutes();
   });
 }
 
-const { getHost, getPort } = new Variables();
+function getPort(): number {
+  return parseInt(process.env.PORT || "3000");
+}
+
+function getHost(): string {
+  return process.env.HOST || "localhost";
+}
 
 server().listen(getPort(), getHost(), () => {
-  console.log("Server is running on http://localhost:3000");
+  console.log(`Server is running on http://${getHost()}:${getPort()}`);
 });

@@ -20,6 +20,11 @@
     /* Path */
     "paths": {
       "@/*": ["./src/*"]
-    }
-  }
+    },
+
+    /* Additional Options */
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*"]
 }
