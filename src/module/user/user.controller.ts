@@ -2,6 +2,7 @@ import {
   responseOk,
   responseError,
 } from "../../common/helper/utils/response.handler.js";
+import { IUserInputDTO } from "./user.model.js";
 import { UserService } from "./user.service.js";
 import { IncomingMessage, ServerResponse } from "http";
 import { USER_ERROR_MESSAGES } from "../../common/helper/consts/userResponse.consts.js";
@@ -31,7 +32,7 @@ export class UserController {
     res: ServerResponse
   ): Promise<void> {
     try {
-      const data = await bodyParser(req);
+      const data : IUserInputDTO = await bodyParser(req);
       const newUser = await this.userService.create(data);
       responseOk(res, 201, newUser);
     } catch (error: unknown) {

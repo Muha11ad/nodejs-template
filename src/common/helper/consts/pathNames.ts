@@ -1,4 +1,5 @@
 export const PATHNAME = {
-  user: "/users",
+  users: "/users",
   getUsers: "/users",
+  user: "/users/:id",
 };

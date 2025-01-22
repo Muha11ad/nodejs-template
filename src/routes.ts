@@ -30,7 +30,7 @@ export class Router {
   }
 
   public renderRoutes() {
-    if (this.pathname == PATHNAME.user) {
+    if (this.pathname.startsWith(PATHNAME.users)) {
       this.renderUserRouter();
     } else {
       this.res.writeHead(404, { "Content-Type": "application/json" });
