@@ -1,11 +1,10 @@
-import multer from "multer";
-import { UploadService } from "./upload.service";
-import { IncomingMessage, ServerResponse } from "http";
 import {
-  responseError,
   responseOk,
-} from "@/common/helper/utils/response.handler";
-import { UPLOAD_RESPONSE } from "@/common/helper/consts/uploadResponse.consts";
+  responseError,
+} from "../../common/helper/utils/response.handler.js";
+import multer from "multer";
+import { UploadService } from "./upload.service.js";
+import { UPLOAD_RESPONSE } from "../../common/helper/consts/uploadResponse.consts.js";
 
 const upload = multer();
 

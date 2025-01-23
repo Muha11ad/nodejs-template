@@ -1,15 +1,20 @@
 import fs from "fs";
 import path from "path";
-import { pathToVideo } from "@/common/helper/consts/paths";
+import { Readable } from "stream";
+import { pathToVideo } from "../../common/helper/consts/paths.js";
 
 export class UploadService {
   async uploadVideo(file: Express.Multer.File): Promise<void> {
     return new Promise((resolve, reject) => {
-      const writeStream = fs.createWriteStream(
-        path.join(pathToVideo, file.originalname)
-      );
+      const filePath = path.join(pathToVideo, file.originalname);
+      const readableStream = new Readable();
+      readableStream._read = () => {};
+      readableStream.push(file.buffer);
+      readableStream.push(null);
 
-      file.stream.on("error", (err) => {
+      const writeStream = fs.createWriteStream(filePath);
+
+      readableStream.on("error", (err) => {
         reject(err);
       });
 
@@ -21,7 +26,7 @@ export class UploadService {
         resolve();
       });
 
-      file.stream.pipe(writeStream);
+      readableStream.pipe(writeStream);
     });
   }
 }
